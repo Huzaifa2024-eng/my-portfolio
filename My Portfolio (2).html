@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>My Portfolio</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;height:100%}
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+body{font-family:Arial,Helvetica,sans-serif;background:#f5f7fb;color:#1f2937;line-height:1.6}
+header{background:#111827;padding:18px 7%;box-shadow:0 4px 15px rgba(0,0,0,.15)}
+nav{max-width:1200px;margin:auto;display:flex;align-items:center;justify-content:space-between}
+.logo{color:#fff;font-size:26px}
+.nav-links{display:flex;align-items:center;gap:28px;list-style:none}
+.nav-links a{color:#fff;text-decoration:none;font-size:15px;font-weight:600;transition:.3s}
+.nav-links a:hover,.nav-links a.active{color:#38bdf8}
+#themeBtn{border:none;background:#1f2937;color:#fff;width:40px;height:40px;border-radius:50%;cursor:pointer;font-size:18px;transition:.3s}
+#themeBtn:hover{background:#374151;transform:rotate(20deg)}
+.page{display:none}.page.show{display:block}
+.hero{min-height:75vh;display:flex;justify-content:center;align-items:center;text-align:center;background:linear-gradient(135deg,#eff6ff,#fff,#e0f2fe);padding:50px 20px}
+.hero-content{max-width:800px}
+.welcome{color:#0284c7;font-size:14px;font-weight:bold;letter-spacing:3px;margin-bottom:15px}
+.hero h1{font-size:55px;margin-bottom:10px;color:#111827}
+.hero h1 span{color:#0284c7}
+.hero h2{font-size:25px;color:#374151;margin-bottom:20px}
+.hero p{font-size:17px;color:#6b7280}
+.buttons{margin-top:30px}
+.btn{display:inline-block;padding:12px 25px;background:#0284c7;color:#fff;border-radius:8px;text-decoration:none;font-weight:bold;border:none;cursor:pointer;transition:.3s}
+.btn:hover{background:#0369a1;transform:translateY(-2px)}
+.secondary{background:#374151}.secondary:hover{background:#1f2937}
+.container{width:90%;max-width:1050px;margin:50px auto}
+.page-title{text-align:center;margin-bottom:40px}
+.page-title h1{font-size:40px;color:#0284c7;margin-bottom:5px}
+.page-title p{color:#6b7280}
+.card{background:#fff;padding:30px;margin-bottom:25px;border-radius:12px;box-shadow:0 5px 20px rgba(0,0,0,.08);transition:.3s}
+.card:hover{transform:translateY(-3px);box-shadow:0 10px 30px rgba(0,0,0,.12)}
+.card h2{color:#0284c7;margin-bottom:15px;border-left:4px solid #0284c7;padding-left:12px}
+.card h3{margin-top:15px;color:#374151}
+table{width:100%;border-collapse:collapse;overflow:hidden;border-radius:8px}
+th,td{padding:14px;border:1px solid #e5e7eb;text-align:left}
+th{background:#0284c7;color:#fff}
+tr:nth-child(even){background:#f8fafc}
+tr:hover{background:#e0f2fe}
+.biodata-table th{width:35%}
+.skill-list{display:flex;flex-wrap:wrap;gap:12px;list-style:none}
+.skill-list li{background:#e0f2fe;color:#0369a1;padding:8px 16px;border-radius:20px;font-weight:600}
+.skills-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:25px}
+.skill-card{background:#fff;padding:30px;border-radius:12px;box-shadow:0 5px 20px rgba(0,0,0,.08)}
+.skill-card h2{color:#0284c7;margin-bottom:20px}
+.skill-card ul{padding-left:20px}.skill-card li{margin-bottom:8px}
+.progress{width:100%;height:10px;background:#e5e7eb;border-radius:10px;margin:6px 0 18px;overflow:hidden}
+.progress div{height:100%;background:linear-gradient(90deg,#0284c7,#38bdf8);border-radius:10px}
+.contact-card{background:#fff;padding:35px;border-radius:12px;display:grid;grid-template-columns:1fr 1fr;gap:40px;box-shadow:0 5px 20px rgba(0,0,0,.08)}
+form{display:flex;flex-direction:column}
+label{margin-top:12px;margin-bottom:5px;font-weight:bold}
+input,textarea{width:100%;padding:13px;border:1px solid #d1d5db;border-radius:7px;font-family:inherit;font-size:15px;outline:none;transition:.3s}
+input:focus,textarea:focus{border-color:#0284c7;box-shadow:0 0 0 3px rgba(2,132,199,.1)}
+.contact-info h2{color:#0284c7;margin-bottom:20px}.contact-info p{margin-bottom:12px}
+#formMsg{margin-top:12px;font-weight:600}
+footer{background:#111827;color:#fff;text-align:center;padding:22px;margin-top:60px;font-size:14px}
+.dark-mode{background:#0f172a;color:#e5e7eb}
+.dark-mode .hero{background:#0f172a}
+.dark-mode .hero h1{color:#fff}.dark-mode .hero h2{color:#cbd5e1}.dark-mode .hero p{color:#94a3b8}
+.dark-mode .card,.dark-mode .skill-card,.dark-mode .contact-card{background:#1e293b;color:#e5e7eb}
+.dark-mode .card h3{color:#e5e7eb}
+.dark-mode tr:nth-child(even){background:#334155}
+.dark-mode td{border-color:#475569}
+.dark-mode input,.dark-mode textarea{background:#334155;color:#fff;border-color:#475569}
+@media(max-width:768px){
+nav{flex-direction:column;gap:18px}
+.nav-links{flex-wrap:wrap;justify-content:center;gap:15px}
+.hero h1{font-size:40px}.hero h2{font-size:20px}
+.skills-grid,.contact-card{grid-template-columns:1fr}
+.container{width:92%}table{font-size:14px}}
+/* Emerald colour scheme */
+body{background:#f0fdf4}
+header,footer{background:#064e3b}
+#themeBtn{background:#065f46}#themeBtn:hover{background:#047857}
+.nav-links a:hover,.nav-links a.active{color:#34d399}
+.hero{background:linear-gradient(135deg,#ecfdf5,#fff,#d1fae5)}
+.welcome,.hero h1 span,.page-title h1,.card h2,.skill-card h2,.contact-info h2{color:#059669}
+.card h2{border-left-color:#059669}
+.btn,th{background:#059669}.btn:hover{background:#047857}
+.secondary{background:#374151}.secondary:hover{background:#1f2937}
+tr:nth-child(even){background:#f0fdf4}tr:hover{background:#d1fae5}
+.skill-list li{background:#d1fae5;color:#047857}
+.progress div{background:linear-gradient(90deg,#059669,#34d399)}
+input:focus,textarea:focus{border-color:#059669;box-shadow:0 0 0 3px rgba(5,150,105,.15)}
+.dark-mode{background:#052e2b}
+.dark-mode .hero{background:#052e2b}
+.dark-mode .card,.dark-mode .skill-card,.dark-mode .contact-card{background:#0f3d36}
+.dark-mode tr:nth-child(even){background:#14524a}
+.dark-mode tr:hover{background:#1b6b60}
+.dark-mode td{border-color:#1f6f63}
+.dark-mode input,.dark-mode textarea{background:#14524a;border-color:#1f6f63}
+</style>
+</head>
+<body>
+<header><nav>
+<h2 class="logo">MyPortfolio</h2>
+<ul class="nav-links">
+<li><a href="#home">Home</a></li><li><a href="#resume">Resume</a></li><li><a href="#biodata">Bio-data</a></li><li><a href="#skills">Skills</a></li><li><a href="#contact">Contact</a></li>
+</ul>
+<button id="themeBtn">🌙</button>
+</nav></header>
+
+<main>
+<div class="page" id="home"><section class="hero"><div class="hero-content">
+<p class="welcome">WELCOME TO MY WEBSITE</p>
+<h1>Hello, I'm <span>Syed Huzaifa</span></h1>
+<h2>Computer Science Engineering Student</h2>
+<p>I am a passionate engineering student interested in programming, web development and problem solving.</p>
+<div class="buttons"><a href="#resume" class="btn">View Resume</a> <a href="#biodata" class="btn secondary">View Bio-data</a></div>
+</div></section></div>
+
+<div class="page" id="resume"><div class="container">
+<section class="page-title"><h1>My Resume</h1><p>Academic and professional information</p></section>
+<section class="card"><h2>Career Objective</h2><p>To obtain an opportunity where I can use my technical knowledge, programming skills and problem-solving abilities to contribute to an organization while continuously improving my skills.</p></section>
+<section class="card"><h2>Education</h2><table>
+<tr><th>Qualification</th><th>Institution</th><th>Year</th></tr>
+<tr><td>B.E. Computer Science</td><td>Engineering College</td><td>2024 - Present</td></tr>
+<tr><td>PUC / 12th</td><td>Higher Secondary College</td><td>2024</td></tr>
+<tr><td>SSLC / 10th</td><td>High School</td><td>2022</td></tr></table></section>
+<section class="card"><h2>Technical Skills</h2><ul class="skill-list"><li>C / C++</li><li>Java</li><li>Python</li><li>HTML &amp; CSS</li><li>JavaScript</li><li>SQL</li></ul></section>
+<section class="card"><h2>Projects</h2>
+<article><h3>Personal Portfolio Website</h3><p>Designed and developed a responsive personal portfolio using HTML, CSS and JavaScript.</p></article>
+<article><h3>Student Management System</h3><p>Developed a basic student management application for storing and managing student information.</p></article></section>
+<section class="card"><h2>Declaration</h2><p>I hereby declare that the information provided above is true and correct to the best of my knowledge.</p></section>
+</div></div>
+
+<div class="page" id="biodata"><div class="container">
+<section class="page-title"><h1>Bio-data</h1><p>Personal information</p></section>
+<section class="card"><table class="biodata-table">
+<tr><th>Name</th><td>Syed Huzaifa</td></tr>
+<tr><th>Date of Birth</th><td>27 March 2006</td></tr>
+<tr><th>Gender</th><td>Male</td></tr>
+<tr><th>Nationality</th><td>Indian</td></tr>
+<tr><th>Course</th><td>Bachelor of Engineering</td></tr>
+<tr><th>Branch</th><td>Computer Science Engineering</td></tr>
+<tr><th>University</th><td>Visvesvaraya Technological University</td></tr>
+<tr><th>Languages Known</th><td>English, Kannada, Hindi</td></tr>
+<tr><th>Hobbies</th><td>Programming, Reading, Fitness</td></tr>
+<tr><th>Career Interest</th><td>Software Development</td></tr>
+</table></section>
+</div></div>
+
+<div class="page" id="skills"><div class="container">
+<section class="page-title"><h1>My Skills</h1><p>Technical and soft skills</p></section>
+<section class="skills-grid">
+<div class="skill-card"><h2>Programming</h2>
+<p>C / C++</p><div class="progress"><div style="width:80%"></div></div>
+<p>Java</p><div class="progress"><div style="width:70%"></div></div>
+<p>Python</p><div class="progress"><div style="width:65%"></div></div></div>
+<div class="skill-card"><h2>Web Development</h2>
+<p>HTML</p><div class="progress"><div style="width:90%"></div></div>
+<p>CSS</p><div class="progress"><div style="width:80%"></div></div>
+<p>JavaScript</p><div class="progress"><div style="width:65%"></div></div></div>
+<div class="skill-card"><h2>Database</h2>
+<p>SQL</p><div class="progress"><div style="width:70%"></div></div>
+<p>MongoDB</p><div class="progress"><div style="width:60%"></div></div></div>
+<div class="skill-card"><h2>Soft Skills</h2><ul><li>Problem Solving</li><li>Communication</li><li>Team Work</li><li>Time Management</li><li>Leadership</li></ul></div>
+</section>
+</div></div>
+
+<div class="page" id="contact"><div class="container">
+<section class="page-title"><h1>Contact Me</h1><p>Get in touch with me</p></section>
+<section class="contact-card">
+<form id="contactForm">
+<label for="name">Name</label><input type="text" id="name" placeholder="Enter your name">
+<label for="email">Email</label><input type="email" id="email" placeholder="Enter your email">
+<label for="message">Message</label><textarea id="message" rows="6" placeholder="Enter your message"></textarea>
+<button type="submit" class="btn" style="margin-top:16px">Send Message</button>
+<p id="formMsg"></p>
+</form>
+<div class="contact-info"><h2>Contact Information</h2>
+<p>📧 Email: shuzaif006@gmail.com</p>
+<p>📱 Phone: +91 9845562722</p>
+<p>📍 Location: Karnataka, India</p></div>
+</section>
+</div></div>
+</main>
+
+<footer><p>&copy; 2026 Syed Huzaifa. All Rights Reserved.</p></footer>
+
+<script>
+// Page switching (replaces separate .html files in this single-file preview)
+const pages=["home","resume","biodata","skills","contact"];
+function show(){
+  let id=location.hash.slice(1);
+  if(!pages.includes(id)) id="home";
+  pages.forEach(p=>document.getElementById(p).classList.toggle("show",p===id));
+  document.querySelectorAll(".nav-links a").forEach(a=>a.classList.toggle("active",a.getAttribute("href")==="#"+id));
+  window.scrollTo(0,0);
+}
+window.addEventListener("hashchange",show);
+show();
+
+// Dark mode
+const themeBtn=document.getElementById("themeBtn");
+themeBtn.addEventListener("click",()=>{
+  document.body.classList.toggle("dark-mode");
+  themeBtn.textContent=document.body.classList.contains("dark-mode")?"☀️":"🌙";
+});
+
+// Contact form validation (inline message instead of alert, since alerts are blocked in embedded previews)
+const contactForm=document.getElementById("contactForm");
+const formMsg=document.getElementById("formMsg");
+contactForm.addEventListener("submit",e=>{
+  e.preventDefault();
+  const n=name.value.trim(),em=email.value.trim(),m=message.value.trim();
+  if(!n||!em||!m){formMsg.style.color="#dc2626";formMsg.textContent="Please fill in all fields.";return;}
+  formMsg.style.color="#16a34a";formMsg.textContent="Thank you! Your message has been submitted.";
+  contactForm.reset();
+});
+</script>
+</body>
+</html>
